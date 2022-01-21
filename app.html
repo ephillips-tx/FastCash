@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Eric Phillips</title>
+    <title>FASTCASH: A Coding Project By Eric Phillips</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,6 +13,11 @@
 
     <script src="https://kit.fontawesome.com/5db21ba9c6.js" crossorigin="anonymous"></script>
 
+    <!-- Google Fonts for Righteous-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+
     <link href="css/site.css" rel="stylesheet">
     <link href="img/blk-favicon-32x32.png" rel="icon" type="image/png">
 </head>
@@ -21,7 +26,8 @@
     <!-- NAV SECTION -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="img/wht-android-chrome-192x192.png" class="d-inline-block align-text-top" alt="mark" width="30" height="30"> APP NAME</a>
+            <a class="navbar-brand logoFont" href="#"><img src="img/wht-android-chrome-192x192.png" class="d-inline-block align-bottom" 
+                alt="mark" width="30" height="30"> FASTCASH</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -32,7 +38,7 @@
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page href="app.html">The App</a>
+                        <a class="nav-link active" aria-current="page" href="app.html">The App</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="code.html">The Code</a>
@@ -49,8 +55,44 @@
     </nav>
     <!-- MAIN SECTION -->
     <main class="flex-shrink-0">
-        <div class="container">
-
+        <div class="container px-5 py-4 mt-5">
+            <div class="row row-cols-1 row-cols-lg-2">
+                <div class="col col-lg-4 border-end border-2">
+                    <h1 class="display-6 fw-bold lh-1 mb-3"><span class="logoFont">FASTCASH</span>: A Coding Project</h1>
+                    <h4 class="lead">
+                        Count CASH one loop at a time. A javascript coding exercise utilizing loops. Write a
+                        program that displays the numbers from 0 to 100. Apend a "$" symbol before each number. 
+                        Display the even numbers in <strong>BOLD.</strong>
+                    </h4>
+                    <h2 class="mt-5 border-bottom border-2">Instructions</h2>
+                    <p>Enter a starting value and an ending value. Press the button and the values will appear</p>
+                </div>
+                <div class="col col-lg-8">
+                    <h5>Enter Cash Amount</h5>
+                    <p class="text-danger">*Must be between $0 - $100.</p>
+                    <form class="row gx-3 gy-2">
+                        <div class="col">
+                            Start Value: <input id="startValue" type="number" class="form-control" placeholder="Start Value"
+                             value=0 min=0 max=99 aria-label="Start Value">
+                        </div>
+                        <div class="col">
+                            End Value: <input id="endValue" type="number" class="form-control" placeholder="End Value" 
+                            value=100 min=1 max=100 aria-label="End Value">
+                        </div>
+                        <div class="col-12 py-1 d-flex justify-content-end">
+                            <button id="btnSubmit" type="button"  class="btn btn-dark tn-lg">COUNT CASH</button>
+                        </div>
+                    </form>
+                    <h2 class="mt-5 border-bottom border-2">Results</h2>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-sm">
+                            <tbody id="results">
+                                <!-- RESULTS go here. -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
     <!-- FOOTER SECTION -->
@@ -78,6 +120,9 @@
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
     </script>
     <script src="js/site.js"></script>
+    <script>
+        document.getElementById("btnSubmit").addEventListener("click",getValues);
+    </script>
 </body>
 
 </html>

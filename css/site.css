@@ -5,6 +5,21 @@
     --white-color: #e7e7e7;
 }
 
+.odd {
+    font-weight: 100
+}
+
+.even {
+    font-weight: bold
+}
+
+.logoFont {
+    font-family: 'Righteous', cursive; 
+    /*font-family: arboria, sans-serif;
+    font-style: normal;
+    font-weight: 900;*/
+}
+
 body {
     color: var(--dark-color);
 }
