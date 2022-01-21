@@ -45,10 +45,10 @@
                         <a class="nav-link active" href="code.html" aria-current="page">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/ephillips-tx/FastCash/settings">Git Repo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">About</a>
+                        <a class="nav-link" target="_blank" href="https://ewp-portfolio.netlify.com/#about">About</a>
                     </li>
                 </ul>
             </div>
@@ -62,16 +62,83 @@
             <div class="row g-5 py-5 row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers"><code class="language-javascript">
-                        //Call Hello World 
-                        function helloWorld(){
-                            alert("Hello World!");
+                        //get values from page
+                        //start or controller function
+                        function getValues(){
+                            // get values from page 
+                            // - let means that startVal is "block scoped" which allows us to 
+                            //   reuse variable names in other code blocks. This is an especially 
+                            //   wise practice if you plan to bring in libraries which could 
+                            //   contain the same variable names.
+                            let startVal = document.getElementById("startValue").value;
+                            let endVal = document.getElementById("endValue").value;
+
+                            // validate input by parsing to integer
+                            startVal = parseInt(startVal);
+                            endVal = parseInt(endVal);
+
+                            if(Number.isInteger(startVal) && Number.isInteger(endVal)){
+                                if((startVal >=0 && endVal >= 1) && endVal <= 100){
+                                    if(startVal <= endVal){
+                                        //call generateNumbers
+                                        let numbers = generateNumbers(startVal, endVal);
+                                        //call displayNumbers
+                                        displayNumbers(numbers);
+                                    } else {
+                                        alert("Error code 1001: The starting value must 
+                                        be less than the ending value.");
+                                    }
+                                } else {
+                                    alert("Error code 1002: You enterted a value outside 
+                                    of the range (0 - 100).");
+                                }
+                            } else {
+                                alert("Error code 1003: You must enter integers.");
+                            }
+                        }
+
+                        //generate numbers from startValue to endValue
+                        //logic function(s)
+                        function generateNumbers(sVal, eVal){
+                            let numbers = [];
+
+                            //get all numbers from start to end
+                            for(let i = sVal; i <= eVal; i++){
+                                //this will execute in a loop until i = eVal
+                                numbers.push(i);
+                            }
+                            
+                            return numbers;
+                        }
+
+                        //display numbers. Mark even numbers bold
+                        //display or view function
+                        function displayNumbers(numbers){
+                            let templateRows = "";
+                            let className = "even";
+
+                            for(let i = 0; i &lt; numbers.length; i++){
+                                let number = numbers[i];
+                                if(number % 2 == 0) {
+                                    className = "even";
+                                } else {
+                                    className = "odd";
+                                }
+                                templateRows += `&lt;tr>&lt;td class="text-center ${className}">$ ${number}.00&lt;/td>&lt/tr>`;
+                            }
+                            document.getElementById("results").innerHTML = templateRows;
                         }
                     </code></pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The code is structured in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World!"</p>
+                    <p>The app takes a starting & an ending value via HTML input tags. Then, using javascript, it validates the user 
+                        input to make sure we are getting the expected values. The app will throw error messages if the input isn't correct. 
+                        If the input is correct then the app will create an empty array. The code accesses the length property of the array 
+                        to know when to stop appending new html. As soon as the app is done counting it starts to display rows of dollar amounts.
+                        To satisfy the final piece of the challenge, only the even dollar amounts are given bold styling. 
+                    </p>
+                    <h5 class="logoFont">FASTCASH</h5>
+                    <p><span class="logoFont">FASTCASH</span> is an app that let's you count by $1s really FAST!</p>
                 </div>
             </div>
          </div>
@@ -89,9 +156,9 @@
                 </div>
                 <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
                     <div class="row">
-                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a></div>
-                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-github fa-2x"></i></a></div>
-                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-twitter fa-2x"></i></a></div>
+                        <div class="col social"><a href="https://www.linkedin.com/in/eric-phillips-04b92252/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a></div>
+                        <div class="col social"><a href="https://github.com/ephillips-tx" target="_blank"><i class="fab fa-github fa-2x"></i></a></div>
+                        <div class="col social"><a href="https://twitter.com/11EricWayne11" target="_blank"><i class="fab fa-twitter fa-2x"></i></a></div>
                     </div>
                 </div>
             </div>

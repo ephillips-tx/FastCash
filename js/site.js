@@ -14,7 +14,7 @@ function getValues(){
     endVal = parseInt(endVal);
 
     if(Number.isInteger(startVal) && Number.isInteger(endVal)){
-        if(startVal >=0 && endVal >= 1){
+        if((startVal >=0 && endVal >= 1) && endVal <= 100){
             if(startVal <= endVal){
                 //call generateNumbers
                 let numbers = generateNumbers(startVal, endVal);
@@ -24,7 +24,7 @@ function getValues(){
                 alert("Error code 1001: The starting value must be less than the ending value.");
             }
         } else {
-            alert("Error code 1002: You enterted a negative value.");
+            alert("Error code 1002: You enterted a value outside of the range (0 - 100).");
         }
     } else {
         alert("Error code 1003: You must enter integers.");
